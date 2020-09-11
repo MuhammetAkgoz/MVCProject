@@ -1,0 +1,31 @@
+﻿@model CategoryListViewModel
+   
+
+@{
+}
+
+<h2>Katogoriler</h2>
+<div class="list-group">
+
+    @{
+        var css1 = "list-group-item";
+        if (Model.CurrentCategory == 0)
+        {
+            css1 += " active";
+            
+        }
+    }
+
+    <a href="/product/index" class="@css1">Tüm Ürünler</a>
+
+    @foreach (var category in Model.Categories)
+    {
+
+        var css2 = "list-group-item";
+        if (category.CategoryId == Model.CurrentCategory)
+        {
+            css2 += " active";
+        }
+        <a href="/product/index?category=@category.CategoryId" class="@css2">@category.CategoryName</a>
+    }
+</div>
